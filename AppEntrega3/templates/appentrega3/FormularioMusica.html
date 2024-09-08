@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+    
+    <form action="" method="POST">
+     {% csrf_token %}
+
+     <h1 style="color: brown;">Agregar una Musica</h1>
+
+     <p>Nombre: <input type="text" name="nombre"> </p>
+     <p>Genero: <input type="text" name="genero"> </p>
+     <p>Año: <input type="number" name="año"> </p>
+
+
+     <input type="submit" value="Enviar">
+
+
+    </form>
+    
+    {% endblock %}
+
+</body>
+</html>

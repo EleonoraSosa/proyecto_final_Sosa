@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Música</title>
+</head>
+<body>
+
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+
+        <h1>Editar {{ musica.nombre }}</h1>
+
+        <!-- Formulario para editar la información de la música -->
+        <form method="POST">
+            {% csrf_token %}
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ musica.nombre }}" required><br>
+
+            <label for="genero">Género:</label>
+            <input type="text" id="genero" name="genero" value="{{ musica.genero }}" required><br>
+
+            <label for="año">Año:</label>
+            <input type="number" id="año" name="año" value="{{ musica.año }}" required><br>
+
+            <!-- Botón para guardar los cambios -->
+            <button type="submit">Guardar</button>
+        </form>
+
+        <!-- Botón para volver o cancelar la edición -->
+        <a href="{% url 'leerMusica' %}">Volver</a>
+
+    {% endblock %}
+    
+</body>
+</html>
+

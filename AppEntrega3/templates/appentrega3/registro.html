@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+       
+        <!-- Content section 1-->
+    <section id="scroll">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'appentrega3/assets/img/01.jpg'  %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">¡Registrate aqui!</h2>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </section>
+    <form action="/registroFormulario/" method="post">
+        {% csrf_token %}
+
+        <p>Nombre: <input type="text" name="nombre"> </p>
+        <p>Apellido: <input type="text" name="apellido"> </p>
+        <p>Email: <input type="text, number" name="email"> </p>
+        <p>Edad: <input type="number" name="edad"> </p>
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+    {% endblock %}
+
+    
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+
+        <button type="submit"> Inicio Sesion </button>
+    </form>
+
+    <!-- Mostrar el mensaje de error -->
+    {% if msg_login %}
+        <p style="color: red;">{{ msg_login }}</p>
+    {% endif %}
+
+    {% endblock %}
+    
+</body>
+</html>

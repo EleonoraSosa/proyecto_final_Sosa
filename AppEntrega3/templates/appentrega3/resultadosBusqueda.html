@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Resultados de la Búsqueda</h1>
+    
+    
+    {% if registros %}
+        <ul>
+            {% for registro in registros %}
+                <li>{{ registro.nombre }} {{ registro.apellido }} - {{ registro.email }} - {{ registro.edad }} años</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados para "{{ nombre }}".</p>
+    {% endif %}
+    <a href="{% url 'buscar' %}">Volver a buscar</a>
+
+
+</body>
+</html>
+
+
+

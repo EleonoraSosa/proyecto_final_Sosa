@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <!-- Renderiza todos los campos del formulario -->
+        <table>
+            {{ mi_form.as_table }}
+        </table>
+    
+        <!-- Botón para cambiar la contraseña -->
+        <a class="btn btn-primary" href="{% url 'cambiarcontrasenia' %}">Cambiar contraseña</a>
+    
+        <!-- Botón para actualizar el perfil -->
+        <input type="submit" value="Actualizar" class="btn btn-secondary">
+    </form>
+    
+
+    {% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+
+    <!-- Content section 2-->
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'appentrega3/assets/img/02.jpg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <h2 class="display-4">¡Añade tu cancion favorita!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <form action="/musicaFormulario/" method="post">
+        {% csrf_token %}
+
+        <p>Nombre: <input type="text" name="nombre"> </p>
+        <p>Genero: <input type="text" name="genero"> </p>
+        <p>Año: <input type="number" name="año"> </p>
+    
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+         <h1>Buscar tu cancion</h1>
+
+    <form action="{% url 'buscar' %}" method="GET">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <input type="submit" value="Buscar">
+        
+    </form>
+
+        <h1>Resultados de la Búsqueda</h1>
+        
+        {% if musicas %}
+            <ul>
+                {% for musica in musicas %}
+                    <li>{{ musica.nombre }} - {{ musica.genero }} - {{ musica.año }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+
+        <p>No se encontraron resultados para "{{ nombre }}".</p>
+        {% endif %}
+        
+        <a href="{% url 'buscar' %}">Volver a buscar</a>
+
+        
+
+    {% endblock %}
+
+</body>
+</html>

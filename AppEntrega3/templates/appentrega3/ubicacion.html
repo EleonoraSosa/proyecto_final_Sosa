@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% extends "appentrega3/padre.html" %}
+
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+
+    <!-- Content section 3-->
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'appentrega3/assets/img/03.jpg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">¡Ingresa tu ubicacion!</h2>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <form action="/ubicacionFormulario/" method="post">
+        {% csrf_token %}
+
+        <p>Ciudad: <input type="text" name="ciudad"> </p>
+        <p>Capital: <input type="text" name="capital"> </p>
+        <p>Codigo Postal: <input type="number" name="codigo_posta"> </p>
+    
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+
+    {% endblock %}
+
+</body>
+</html>
